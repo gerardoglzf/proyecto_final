@@ -18,13 +18,12 @@
     <div class="row">
         <div class="col-10 col-sm-4">
             <div class=" card text-center" style="width: 20rem; margin-top: 50px;">
-                <img class="card-img-top rounded-circle mx-auto d-block" style="height: 200px; width: 200px; background-color: #EFEFEF;" src="images/{{  Auth::user()->avatar }}" alt="">
+                <img class="card-img-top rounded-circle mx-auto d-block" style="height: 200px; margin-top: 10px; width: 200px; background-color: #EFEFEF;" src="images/{{  Auth::user()->avatar }}" alt="">
                 <div class="card-body">
 
-                    <h5 class="card-title">{{ Auth::user()->nombre }}</h5>
-                    <p class="card-text">Last name: {{ Auth::user()->apellido }}</p>
-                    <p class="card-text">Email: {{ Auth::user()->correo }}</p>
-                    <p class="card-text">Number phone: {{ Auth::user()->num_cel }}</p>
+                    <h5 class="card-title" style="color:black;">{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</h5>
+                    <p class="card-text"><strong> Email:</strong> {{ Auth::user()->correo }}</p>
+                    <p class="card-text"><strong>Número telefónico: </strong>{{ Auth::user()->num_cel }}</p>
                     <a href="/editar/{{ Auth::user()->id  }}" class="btn btn-primary">Editar perfil</a>
                 </div>
              </div>
@@ -55,9 +54,9 @@
             <div class="card text-center" style="width: 18rem; margin-top: 40px;">
                     <img class="card-img-top rounded-circle mx-auto d-block" style="height: 200px; width: 200px; background-color: #EFEFEF;" src="productos/{{ $dato->url }}" alt="">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $dato->nombre }}</h5>
-                    <p class="card-text"><strong>Precio: ${{ $dato->precio }}</strong></p>
-                    <p class="card-text"><strong>Descripción: {{ $dato->descripcion }}</strong></p>
+                    <h5 class="card-title" style="color: black">{{ $dato->nombre }}</h5>
+                    <p class="card-text"><strong>Precio: ${{ $dato->precio }}.00</strong></p>
+                    <p class="card-text"><strong>Descripción: {{ $descripcion=str_limit($dato->descripcion, 50) }}</strong></p>
                     <a href="/producto/{{ $dato->id  }}/editar" class="btn btn-primary">Editar</a>
                     <a href="/producto/{{ $dato->id }}/borrar" class="btn btn-danger">Vendido</a>
                 </div>
@@ -79,7 +78,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $sold->nombre }}</h5>
                 <p class="card-text"><strong>Precio: ${{ $sold->precio }}</strong></p>
-                <p class="card-text"><strong>Descripción: {{ $sold->descripcion }}</strong></p>
+                <p class="card-text"><strong>Descripción: {{ $descripcion=str_limit($dato->descripcion, 50) }}</strong></p>
                 <a href="/producto/{{ $sold->id  }}/editar" class="btn btn-primary">Editar</a>
                 <a href="/producto/{{ $sold->id }}/ofrecer" class="btn btn-success">Ofrecer</a>
             </div>

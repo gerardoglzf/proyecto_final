@@ -34,7 +34,7 @@
                         </div>
     
                         <div class="form-group" id="form"> 
-                            <label for="">Foto de perfil</label> <br>
+                            <label style="color:white;" for="">Foto de perfil</label> <br>
                             <input id="file" type="file" name="avatar" required>
                         </div> 
                     </div>

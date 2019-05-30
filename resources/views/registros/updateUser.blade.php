@@ -18,7 +18,7 @@
    
      <div class="col-12 col-sm-2" style=" margin-bottom: 10px;">
         <img src="/images/{{  $upUser->avatar }}" style="width: 110px; height: 110px; margin-top=0;">
-        <label style="margin-left:5px;">Imagen actual</label>
+        <label style="margin-left:5px; color:white;">Imagen actual</label>
     </div>
 
     <div class="col-12 col-sm-3">
@@ -33,7 +33,7 @@
     
     <div class="col-12 col-sm-5">
         <div class="form-group" id="form"> 
-            <label for="">Photo</label> <br>
+            <label style="color:white;">Photo</label> <br>
             <input id="file" type="file" name="avatar">
         </div> 
     </div>

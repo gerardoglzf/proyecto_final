@@ -162,7 +162,33 @@ class productosController extends Controller
         $editar->cantidad = $request->get('cantidad');
         $editar->precio = $request->get('precio');
         $editar->save();
+        $this->imgUpdate($request,$id);
         return Redirect::to('perfil_Usuario');
+    }
+    public function imgUpdate(Request $request,$id_producto){
+        $nombre="";
+        $archivo="";
+        
+        $foto=imagen::where('id_producto','=',$id_producto)->first();
+        
+        if($request->hasFile('file')){
+            $archivo = $request->file('file');
+            $nombre = time().$archivo->getClientOriginalName();
+            $archivo->move(public_path().'/productos/',$nombre);
+        }else{
+            $nombre=$foto->url;
+        }
+
+        imagen::where('id_producto','=',$id_producto)->update(array('url'=>$nombre,'alt'=>$request->get('nom_producto')));
+
+
+  /*      imagen::create([
+            'id_producto' => $id,
+            'url' => $nombre,
+            'alt' => $request['nom_producto'],
+        ]);
+*/
+        
     }
 
     /**

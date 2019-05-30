@@ -26,7 +26,7 @@
       <div class="login-container"> 
         
         @if(Auth::check())
-        <a style="color: black; font-style: bold;">{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</a>
+        <a style="color: white; font-style: bold;">{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</a>
         <a href="{{ url('/cerrar_sesion') }}" class="active">Cerrar sesion</a>
         @else
         {!! Form::open(['route'=>'log.store', 'method'=>'POST']) !!}
@@ -40,7 +40,7 @@
     
     <!--Navbar-->
     
-    <div class="container">
+    <div class="container" id="grad1">
       @include('ventanas.errors')
       @yield('content')
     </div>

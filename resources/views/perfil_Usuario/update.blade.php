@@ -19,10 +19,10 @@
     <div class="row">
         <div class="col-10 col-sm-4">
             <div class=" card text-center" style="width: 20rem; margin-top: 50px;">
-                <img class="card-img-top rounded-circle mx-auto d-block" style="height: 200px; width: 200px; background-color: #EFEFEF;" src="/images/{{  Auth::user()->avatar }}" alt="">
+                <img class="card-img-top rounded-circle mx-auto d-block" style="height: 200px; margin-top: 10px; width: 200px; background-color: #EFEFEF;" src="/images/{{  Auth::user()->avatar }}" alt="">
                 <div class="card-body">
 
-                    <h5 class="card-title">{{ Auth::user()->nombre }}</h5>
+                    <h5 class="card-title" style="color: black">{{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</h5>
                     <p class="card-text">Last name: {{ Auth::user()->apellido }}</p>
                     <p class="card-text">Email: {{ Auth::user()->correo }}</p>
                     <p class="card-text">Number phone: {{ Auth::user()->num_cel }}</p>
@@ -33,24 +33,24 @@
         
 <!--Registro de productos-->    
     <div class="col-10 col-sm-4" id="perfil" style="width: 20rem; margin-top: 40px;">
-        <h5>Ahora puedes registrar tus productos</h5>
+        <h5>Ahora puedes Actualizar tus productos</h5>
         
         @foreach ($producto as $data)
         {!! Form::model($producto,['route'=>['producto.update',$data->id], 'method'=>'PUT', 'files' => true, 'role' => 'form']) !!}
         <div class="form-group">    
-            <input type="text" name="nom_producto" value="{{ $data->nombre }}" placeholder="Name" class="form-control"  required>
+            <input type="text" name="nom_producto" value="{{ $data->nombre }}" placeholder="Nombre" class="form-control"  required>
         </div>
         
         <div class="form-group">    
-            <input type="text" style="height: 7rem;" value="{{ $data->descripcion }}" name="descripcion" placeholder="Description" class="form-control" required>
+            <input type="text" style="height: 7rem;" name="descripcion"  value="{{ $data->descripcion }}" placeholder="Description" class="form-control" required>
         </div>
         
         <div class="form-group">    
-            <input type="text" name="cantidad" value="{{ $data->cantidad }}" placeholder="Precio" class="form-control" required>
+            <input type="text" name="cantidad" value="{{ $data->cantidad }}" placeholder="Cantidad" class="form-control" required>
         </div>
         
         <div class="form-group">
-            <input type="text" name="precio" value="{{ $data->precio }}" placeholder="Cantidad" class="form-control" required>
+            <input type="text" name="precio" value="{{ $data->precio }}" placeholder="Precio" class="form-control" required>
         </div>
         
         <h5>Selecciona imagenes del producto</h5>
@@ -85,7 +85,7 @@
             <div class="card text-center" style="width: 18rem; margin-top: 40px;">
                     <img class="card-img-top rounded-circle mx-auto d-block" style="height: 200px; width: 200px; background-color: #EFEFEF;" src="/productos/{{ $dato->url }}"  alt="">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $dato->nombre }}</h5>
+                    <h5 class="card-title" style="color:black">{{ $dato->nombre }}</h5>
                     <p class="card-text"><strong>Precio: ${{ $dato->precio }}</strong></p>
                     <p class="card-text"><strong>Descripción: {{ $dato->descripcion }}</strong></p>
                     <a href="/producto/{{ $dato->id  }}" class="btn btn-primary">editar</a>
